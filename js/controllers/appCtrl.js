@@ -3,8 +3,8 @@
 
   angular.module('app').controller('appCtrl', appCtrl);
 
-  appCtrl.$inject = ['$scope', 'coursesService', '$mdDialog'];
+  appCtrl.$inject = ['$scope'];
 
-  function appCtrl($scope, coursesService){
+  function appCtrl($scope){
   }
 })();

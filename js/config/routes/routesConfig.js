@@ -6,13 +6,13 @@
   routes.$inject = ['$routeProvider'];
 
   function routes($routeProvider){
-    // Route COURSES
-    $routeProvider.when('/courses', {
-      templateUrl: '/views/courses.html',
-      controller:  'coursesCtrl',
+    // Route ESTATES
+    $routeProvider.when('/estates', {
+      templateUrl: '/views/estates.html',
+      controller:  'estatesCtrl',
     });
 
     // DEFAULT route
-    $routeProvider.otherwise({redirectTo: '/404.html'});
+    $routeProvider.otherwise({redirectTo: '/estates'});
   }
 })();
