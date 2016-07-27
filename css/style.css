@@ -1,11 +1,10 @@
-a {
-  text-decoration: none;
-  color: inherit; }
+md-card {
+  max-width: 20%; }
 
-button.md-fab {
-  fill: #FFF; }
-  button.md-fab ng-md-icon {
-    position: relative;
-    top: 6px; }
+.md-card-image, img {
+  height: 320px !important; }
+
+ng-md-icon[icon=add] svg {
+  margin-top: 15px; }
 
 /*# sourceMappingURL=style.css.map */

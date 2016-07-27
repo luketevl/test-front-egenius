@@ -1,3 +1,10 @@
 md-card{
   max-width: 20%;
 }
+.md-card-image, img{
+  height: 320px !important;
+}
+
+ng-md-icon[icon=add] svg {
+    margin-top: 15px;
+}

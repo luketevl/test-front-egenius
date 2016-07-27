@@ -3,8 +3,11 @@
 
   angular.module('app').controller('appCtrl', appCtrl);
 
-  appCtrl.$inject = ['$scope'];
+  appCtrl.$inject = ['$scope', '$mdSidenav'];
 
-  function appCtrl($scope){
+  function appCtrl($scope, $mdSidenav){
+    $scope.openMenu = function() {
+    $mdSidenav('right').toggle();
+  };
   }
 })();

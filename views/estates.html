@@ -1,10 +1,80 @@
+<md-content layout-gt-sm="row" layout-padding layout="row" layout-align="center center">
+<div>
+  <md-input-container>
+    <label>Procurar</label>
+    <input ng-model="search">
+  </md-input-container>
+</div>
+</md-content>
   <section layout="row">
-    <md-button class="md-fab md-fab-top-right" aria-label="Add" ng-click="showAdd($event)">
+    <md-sidenav md-component-id="right" class="md-sidenav-right">
+      <md-sidenav md-component-id="right" md-is-locked-open="$mdMedia('min-width: 333px')" class="md-sidenav-right">
+        <md-content layout-padding>
+          <h1>Novo Imóvel</h1>
+         <form name="estateForm">
+           <md-input-container class="md-block">
+             <md-radio-group ng-model="estate.type">
+                <md-radio-button value="Appartment" class="md-primary">Apartamento</md-radio-button>
+                <md-radio-button value="Home"> Casa </md-radio-button>
+              </md-radio-group>
+           </md-input-container>
+
+           <md-input-container class="md-block">
+             <label>Descrição</label>
+            <textarea ng-model="estate.description" rows="1" md-select-on-focus></textarea>
+           </md-input-container>
+
+           <md-input-container class="md-block">
+             <label>Nome</label>
+             <input required name="name" ng-model="estate.name">
+             <div ng-messages="estateForm.name.$error">
+               <div ng-message="required">Campo obrigatório.</div>
+             </div>
+           </md-input-container>
+
+           <md-input-container class="md-block">
+             <label>Telefone</label>
+             <input name="contact" ng-model="estate.contact" ng-pattern="/^[(][0-9]{2}[)] [0-9]{4}-[0-9]{4}$/" />
+              <div ng-messages="estateForm.contact.$error">
+                <div ng-message="pattern">(##) ####-#### - Por favor, insira um número válido.</div>
+              </div>
+           </md-input-container>
+
+           <md-input-container class="md-block">
+             <label>Valor R$</label>
+             <input required type="number" step="any" name="value" ng-model="estate.value" />
+             <div ng-messages="estateForm.value.$error" multiple md-auto-hide="false">
+               <div ng-message="required">
+                 Campo obrigatório.
+               </div>
+             </div>
+           </md-input-container>
+
+           <md-input-container class="md-block">
+             <label>Titulo Imagem</label>
+             <input ng-model="estate.images[0].desc" />
+           </md-input-container>
+           <md-input-container class="md-block">
+             <label>URL Imagem</label>
+             <input ng-model="estate.images[0].url" />
+           </md-input-container>
+
+           <nav class="md-actions" layout="row">
+            <span flex></span>
+            <md-button ng-click="openMenu()"> Cancelar </md-button>
+            <md-button ng-disabled="estateForm.$invalid" ng-click="add(estate)" class="md-primary"> Salvar </md-button>
+          </nav>
+         </form>
+       </md-content>
+
+      </md-sidenav>
+  </md-sidenav>
+    <md-button class="md-fab md-fab-top-right" aria-label="Add" ng-click="openMenu()">
       <ng-md-icon icon="add"></ng-md-icon>
     </md-button>
     <md-content layout="column" layout-fill="layout-fill" role="main" class="relative">
       <md-content class="md-padding" layout-xs="column" layout="row">
-            <md-card ng-repeat="estate in estates" flex="40">
+            <md-card ng-repeat="estate in estates | filter: search" flex="60">
               <md-card-header>
                 <md-card-avatar>
                   <ng-md-icon class="md-user-avatar" icon="home"></ng-md-icon>
@@ -14,14 +84,17 @@
                   <span class="md-subhead">{{::estate.contact}}</span>
                 </md-card-header-text>
               </md-card-header>
-              <img ng-src="{{estate.images[0].url}}" class="md-card-image" height="200" alt="{{::estate.name}}">
+              <img ng-src="{{estate.images[0].url}}" class="md-card-image" alt="{{::estate.name}}">
               <md-card-title>
                 <md-card-title-text>
                   <span class="md-headline">{{::estate.name}}</span>
-                  <span class="md-subhead">{{::estate.value}}</span>
                 </md-card-title-text>
               </md-card-title>
               <md-card-content>
+                <md-input-container class="md-block" flex-gt-xs>
+                  <label>Valor R$</label>
+                  <input ng-model="estate.value" disabled />
+                </md-input-container>
                 <p>
                   {{::estate.description}}
                 </p>
