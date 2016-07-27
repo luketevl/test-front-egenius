@@ -3,3 +3,7 @@
 >
   - **npm install**
   - **npm install --dev**
+
+== Run server
+>
+  - **http-server**
