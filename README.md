@@ -1,9 +1,12 @@
-= Install the depencys
-== Run
->
-  - **npm install**
-  - **npm install --dev**
+# For run the application is required nodejs
 
-== Run server
->
-  - **http-server**
+## Run
+- **npm install**
+- **npm install --dev**
+
+## Initialize the server with
+- **grunt** or **http-server**
+
+
+### Case have any problem with module http-server please install it global.
+- **npm install http-server -g**
